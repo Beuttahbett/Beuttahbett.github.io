@@ -4,8 +4,9 @@ body {
     margin: 0;
     padding: 0;
     line-height: 1.6;
-    color: #333333; /* Main text color */
-    background-color: #f9f9f9; /* Background */
+    color: #333333; /* Charcoal for main text */
+    background: url('portfolio.JPEG') no-repeat center center fixed;
+    background-size: cover;
 }
 
 /* Header Flex Layout */
@@ -20,14 +21,6 @@ body {
     display: flex;
     align-items: stretch;
 }
-
-.profile-img {
-    height: 100%;
-    width: 120px;
-    object-fit: cover;
-    border-radius: 10px;
-}
-
 .header-center {
     display: flex;
     align-items: center;
@@ -65,12 +58,16 @@ body {
     }
 }
 .profile-img {
-    width: 150px;
+    width: 100%;
     height: 100%;
-    border-radius: 70%;
+    max-width: 180px;
+    max-height: 180px;
+    border-radius: 5%;
     object-fit: cover;
-    margin-bottom: 15px;
-    border: 3px solid #3498db; /* Secondary */
+    margin-bottom: 1px;
+    border: 4px solid #FF6B6B; /* Coral accent border */
+    display: block;
+    background: #F5F7FA; /* fallback for transparent images */
 }
 
 .social-links {
@@ -80,12 +77,21 @@ body {
 .social-links a {
     margin: 0 10px;
     text-decoration: none;
-    color: white;
-    font-size: 1.2em;
+    color: #333333; /* Charcoal for icons */
+    font-size: 1.5em;
+    transition: color 0.2s;
+    background: #F5F7FA;
+    border-radius: 50%;
+    padding: 6px;
+}
+
+.social-links a:hover {
+    color: #FF6B6B; /* Coral on hover */
+    background: #3817cb;
 }
 
 nav {
-    background-color: #2c3e50; /* Primary */
+    background-color: #333333; /* Charcoal */
     padding: 15px 0;
 }
 
@@ -103,17 +109,16 @@ nav ul li {
 }
 
 nav ul li a {
-    color: white;
+    color: #F5F7FA;
     text-decoration: none;
     font-weight: bold;
     padding: 5px 10px;
     border-radius: 3px;
-    transition: background-color 0.3s, color 0.3s;
 }
 
 nav ul li a:hover {
-    background-color: #3498db; /* Secondary */
-    color: #fff;
+    background-color: #FF6B6B; /* Coral */
+    color: #333333;
 }
 
 .container {
@@ -126,9 +131,10 @@ nav ul li a:hover {
     text-align: center;
     margin-bottom: 30px;
     font-size: 2em;
-    color: #2c3e50; /* Primary */
+    color: #333333; /* Charcoal */
     position: relative;
     padding-bottom: 10px;
+    background: transparent;
 }
 
 .section-title:after {
@@ -136,7 +142,7 @@ nav ul li a:hover {
     display: block;
     width: 80px;
     height: 3px;
-    background: #3498db; /* Secondary */
+    background: #FF6B6B; /* Coral underline */
     margin: 10px auto;
 }
 
@@ -148,20 +154,21 @@ nav ul li a:hover {
 }
 
 .specialization-item {
-    background-color: white;
+    background-color: #F5F7FA; /* Soft gray-white */
     padding: 25px;
     border-radius: 5px;
     text-align: center;
     cursor: pointer;
-    transition: transform 0.3s, box-shadow 0.3s;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    border-left: 4px solid #3498db; /* Secondary accent */
+    transition: transform 0.3s, box-shadow 0.3s, border-left 0.3s;
+    box-shadow: 0 2px 5px rgba(44,62,80,0.08);
+    border-left: 4px solid #3498db; /* Blue accent */
+    margin-bottom: 20px;
 }
 
 .specialization-item:hover {
     transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(44,62,80,0.08);
-    border-left: 4px solid #e74c3c; /* Accent on hover */
+    box-shadow: 0 5px 15px rgba(44,62,80,0.12);
+    border-left: 4px solid #FF6B6B; /* Coral on hover */
 }
 
 /* About Page */
@@ -170,21 +177,22 @@ nav ul li a:hover {
     flex-wrap: wrap;
     align-items: center;
     gap: 30px;
-    background-color: white;
+    background-color: #F5F7FA;
     padding: 30px;
     border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 5px rgba(44,62,80,0.08);
 }
 
 .about-text {
     flex: 1;
     min-width: 300px;
+    color: #333333;
 }
 
 .about-image {
     max-width: 400px;
     border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 5px rgba(44,62,80,0.08);
 }
 
 .skills-list {
@@ -197,13 +205,14 @@ nav ul li a:hover {
     padding: 5px 0;
     position: relative;
     padding-left: 25px;
+    color: #333333;
 }
 
 .skills-list li:before {
     content: '▹';
     position: absolute;
     left: 0;
-    color: #3498db; /* Secondary */
+    color: #3498db; /* Blue accent */
 }
 
 /* Education Page */
@@ -213,18 +222,19 @@ nav ul li a:hover {
 }
 
 .education-item {
-    background-color: white;
+    background-color: #F5F7FA;
     margin-bottom: 30px;
     padding: 25px;
     border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 5px rgba(44,62,80,0.08);
     position: relative;
-    border-left: 3px solid #3498db; /* Secondary */
+    border-left: 3px solid #3498db; /* Blue accent */
+    color: #333333;
 }
 
 .education-year {
     font-weight: bold;
-    color: #3498db; /* Secondary */
+    color: #3498db; /* Blue accent */
 }
 
 .institution {
@@ -240,18 +250,19 @@ nav ul li a:hover {
 }
 
 .project-card {
-    background-color: white;
+    background-color: #F5F7FA;
     border-radius: 5px;
     overflow: hidden;
-    transition: transform 0.3s, box-shadow 0.3s;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    border-top: 4px solid #3498db; /* Secondary */
+    transition: transform 0.3s, box-shadow 0.3s, border-top 0.3s;
+    box-shadow: 0 2px 5px rgba(44,62,80,0.08);
+    border-top: 4px solid #3498db; /* Blue accent */
+    color: #333333;
 }
 
 .project-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(44,62,80,0.08);
-    border-top: 4px solid #e74c3c; /* Accent on hover */
+    box-shadow: 0 5px 15px rgba(44,62,80,0.12);
+    border-top: 4px solid #FF6B6B; /* Coral on hover */
 }
 
 .project-image {
@@ -267,14 +278,14 @@ nav ul li a:hover {
 .project-link {
     display: inline-block;
     margin-top: 10px;
-    color: #3498db; /* Secondary */
+    color: #3498db; /* Blue accent */
     text-decoration: none;
     font-weight: bold;
     transition: color 0.3s;
 }
 
 .project-link:hover {
-    color: #e74c3c; /* Accent */
+    color: #FF6B6B; /* Coral */
     text-decoration: underline;
 }
 
@@ -288,10 +299,10 @@ nav ul li a:hover {
 .contact-form {
     flex: 1;
     min-width: 300px;
-    background-color: white;
+    background-color: #F5F7FA;
     padding: 30px;
     border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 5px rgba(44,62,80,0.08);
 }
 
 .form-group {
@@ -302,7 +313,7 @@ nav ul li a:hover {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
-    color: #2c3e50; /* Primary */
+    color: #333333;
 }
 
 .form-group input,
@@ -312,6 +323,8 @@ nav ul li a:hover {
     border: 1px solid #ddd;
     border-radius: 4px;
     font-family: inherit;
+    background: #fff;
+    color: #333333;
 }
 
 .form-group textarea {
@@ -319,8 +332,8 @@ nav ul li a:hover {
 }
 
 .submit-btn {
-    background-color: #3498db; /* Secondary */
-    color: white;
+    background-color: #FF6B6B; /* Coral */
+    color: #fff;
     padding: 12px 20px;
     border: none;
     border-radius: 4px;
@@ -330,16 +343,18 @@ nav ul li a:hover {
 }
 
 .submit-btn:hover {
-    background-color: #e74c3c; /* Accent */
+    background-color: #3498db; /* Blue on hover */
+    color: #fff;
 }
 
 .contact-info {
     flex: 1;
     min-width: 300px;
-    background-color: white;
+    background-color: #F5F7FA;
     padding: 30px;
     border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 5px rgba(44,62,80,0.08);
+    color: #333333;
 }
 
 .contact-info p {
@@ -350,7 +365,7 @@ nav ul li a:hover {
 
 .contact-info i {
     margin-right: 10px;
-    color: #3498db; /* Secondary */
+    color: #3498db; /* Blue accent */
 }
 
 .contact-hours {
@@ -359,14 +374,14 @@ nav ul li a:hover {
 
 /* Accent/Highlight Example */
 .highlight, .important {
-    color: #e74c3c; /* Accent */
+    color: #FF6B6B; /* Coral */
     font-weight: bold;
 }
 
 /* Footer */
 footer {
-    background-color: #2c3e50; /* Primary */
-    color: white;
+    background-color: #333333; /* Charcoal */
+    color: #F5F7FA;
     text-align: center;
     padding: 20px;
     margin-top: 30px;
@@ -385,15 +400,4 @@ footer {
     .about-image {
         max-width: 100%;
     }
-}
-.specialization-item {
-    background-color: white;
-    padding: 25px;
-    border-radius: 5px;
-    text-align: center;
-    cursor: pointer;
-    transition: transform 0.3s, box-shadow 0.3s;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    border-left: 4px solid #3498db; /* Secondary accent */
-    margin-bottom: 20px; /* Add this line for spacing */
 }
