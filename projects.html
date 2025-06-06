@@ -5,6 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects - Beuttah Kipngetich</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .additional-details {
+            display: none;
+            padding: 10px;
+            background-color: #f5f5f5;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+        .project-link {
+            cursor: pointer;
+            color: #0066cc;
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -26,33 +40,64 @@
                 <div class="project-card">
                     <img src="images/project1.jpg" alt="Project 1" class="project-image">
                     <div class="project-info">
-                        <h3>Automated Data Processing System</h3>
-                        <p>A Python-based solution that reduced data processing time by 80% for a financial institution.</p>
-                        <p><strong>Technologies:</strong> Python, Pandas, SQL</p>
-                        <a href="#" class="project-link">View Details</a>
+                        <h3>Automated Data conversion System</h3>
+                        <p>A Python-based solution that reduced time used to generate stickers for use in elections.</p>
+                        <p><strong>Technologies:</strong> Python, Pandas, Excel</p>
+                        <a class="project-link" onclick="toggleDetails('details1', event)">View Details</a>
+                        <div id="details1" class="additional-details">
+                            <p><strong>Client:</strong> United Democratic Alliance</p>
+                            <p><strong>Duration:</strong> 1 month</p>
+                            <p><strong>Key Features:</strong> Faced with a problem of always having to manually design and create the stickers, I wrote a program that automatically fetches the data from an excel file and creates the stickers</p>
+                            <p><strong>Impact:</strong> Saved over 200 man-hours per month and reduced errors by 95%.</p>
+                        </div>
                     </div>
                 </div>
                 <div class="project-card">
                     <img src="images/project2.jpg" alt="Project 2" class="project-image">
                     <div class="project-info">
                         <h3>E-commerce Chatbot</h3>
-                        <p>An AI-powered chatbot that handles 90% of customer inquiries for an online retailer.</p>
-                        <p><strong>Technologies:</strong> Python, NLP, Dialogflow</p>
-                        <a href="#" class="project-link">View Details</a>
+                        <p>I built a chatbot that handles customer inquiries and routine questions</p>
+                        <p><strong>Technologies:</strong> Node.js,Twilio,NLP</p>
+                        <a class="project-link" onclick="toggleDetails('details2', event)">View Details</a>
+                        <div id="details2" class="additional-details">
+                            <p><strong>Client:</strong> Affordables Wear</p>
+                            <p><strong>Duration:</strong> 2 months</p>
+                            <p><strong>Key Features:</strong> Product recommendations, order tracking, and 24/7 customer support.</p>
+                            <p><strong>Impact:</strong> Reduced customer service costs by 40% and improved response time from hours to seconds.</p>
+                        </div>
                     </div>
                 </div>
                 <div class="project-card">
                     <img src="images/project3.jpg" alt="Project 3" class="project-image">
                     <div class="project-info">
-                        <h3>Business Process Automation</h3>
-                        <p>Automated 15 manual processes for a logistics company using n8n workflows.</p>
-                        <p><strong>Technologies:</strong> n8n, API Integration, JavaScript</p>
-                        <a href="#" class="project-link">View Details</a>
+                        <h3>Automated customer feedback collection</h3>
+                        <p>Built an automated feedback and follow up system using N8N</p>
+                        <p><strong>Technologies:</strong> n8n, API Integration, Slack</p>
+                        <a class="project-link" onclick="toggleDetails('details3', event)">View Details</a>
+                        <div id="details3" class="additional-details">
+                            <p><strong>Client:</strong> Fastfood eatery</p>
+                            <p><strong>Duration:</strong> 2 months</p>
+                            <p><strong>Key Features:</strong> I built an N8N workflow that automatically inquires customers on their feedback and  follows up on their answers.</p>
+                            <p><strong>Impact:</strong> Improved customer satisfaction, and general increase in customer traffic as customers wanted where their feedback is valued.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
     </div>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script>
+        function toggleDetails(detailsId, event) {
+            const detailsElement = document.getElementById(detailsId);
+            const link = event.target;
+            if (detailsElement.style.display === "block") {
+                detailsElement.style.display = "none";
+                link.textContent = "View Details";
+            } else {
+                detailsElement.style.display = "block";
+                link.textContent = "Hide Details";
+            }
+        }
+    </script>
 </body>
 </html>
