@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prompt Engineering - Beuttah Kipngetich</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS Variables */
+        :root {
+            --primary-color: #ff3333;
+            --dark-bg: #121212;
+            --medium-bg: #1f1f1f;
+            --light-text: #ffffff;
+            --accent-color: #ff4d4d;
+            --container-width: 90%;
+            --max-container-width: 1200px;
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--medium-bg);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            width: 100%;
+        }
+
+        .nav-container {
+            width: var(--container-width);
+            max-width: var(--max-container-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+            padding: 0;
+            margin: 0;
+            flex-wrap: wrap;
+        }
+
+        .nav-links li a {
+            color: var(--light-text);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+        }
+
+        .nav-links li a:hover {
+            color: var(--accent-color);
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1565&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        header h1 {
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            color: var(--light-text);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        /* Container and Section Styling */
+        .container {
+            width: var(--container-width);
+            max-width: var(--max-container-width);
+            margin: 0 auto 3rem;
+            padding: 0 1rem;
+        }
+
+        .section-title {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            margin-bottom: 2rem;
+            color: var(--accent-color);
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+
+        /* Content Sections */
+        .intro-content p,
+        .what-i-do p {
+            color: #ddd;
+            margin-bottom: 1.5rem;
+            font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+            line-height: 1.8;
+        }
+
+        .what-i-do h3 {
+            color: var(--primary-color);
+            margin: 2rem 0 1rem;
+            font-size: 1.3rem;
+        }
+
+        .what-i-do ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #ddd;
+        }
+
+        .what-i-do li {
+            margin-bottom: 0.8rem;
+            font-size: clamp(0.9rem, 1.5vw, 1rem);
+        }
+
+        .what-i-do strong {
+            color: var(--accent-color);
+        }
+
+        /* Prompt Examples */
+        .prompt-example {
+            background-color: var(--medium-bg);
+            border-left: 4px solid var(--primary-color);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .prompt-example h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .prompt-example p {
+            margin-bottom: 1rem;
+            color: #ddd;
+        }
+
+        .prompt-example strong {
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--medium-bg);
+            padding: 2.5rem 0 1.5rem;
+            text-align: center;
+            margin-top: auto;
+            width: 100%;
+        }
+
+        footer p {
+            color: #aaa;
+            font-size: clamp(0.8rem, 1.5vw, 1rem);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.75rem;
+            }
+        }
+
+        /* Focus States for Accessibility */
+        .nav-links li a:focus,
+        .prompt-example:focus {
+            outline: 2px solid var(--accent-color);
+            outline-offset: 2px;
+        }
+
+        /* Print Styles */
+        @media print {
+            nav {
+                display: none;
+            }
+            body {
+                background-color: white;
+                color: black;
+                font-size: 12pt;
+            }
+            .container {
+                padding: 0;
+                margin: 0;
+            }
+            .prompt-example {
+                page-break-inside: avoid;
+                border-left: 2px solid black;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="container nav-container">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#intro">Introduction</a></li>
+                <li><a href="#what-i-do">What I Do</a></li>
+                <li><a href="#examples">Examples</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Main Header -->
+    <header>
+        <div class="container">
+            <h1>PROMPT ENGINEERING</h1>
+        </div>
+    </header>
+    
+    <!-- Introduction Section -->
+    <section id="intro" class="container">
+        <h2 class="section-title">Brief Introduction</h2>
+        <div class="intro-content">
+            <p>
+                Using LLMs and available AI technologies, I can perform tasks beyond my technical experience by guiding AI to guide me. Prompt engineering is the art and science of crafting effective instructions for AI models to achieve reliable, high-quality results.
+            </p>
+            <p>
+                Click to learn more about how prompt engineering can unlock new capabilities for your business or project.
+            </p>
+        </div>
+    </section>
+    
+    <!-- What I Do Section -->
+    <section id="what-i-do" class="container">
+        <h2 class="section-title">What I Do, Tools I Use, and Results</h2>
+        <div class="what-i-do">
+            <h3>My Expertise</h3>
+            <p>
+                I design, test, and optimize prompts for large language models (LLMs) and generative AI tools. My services include:
+            </p>
+            <ul>
+                <li>Creating prompts for content generation, data extraction, and automation</li>
+                <li>Reducing hallucinations and improving output reliability</li>
+                <li>Developing reusable prompt templates for business workflows</li>
+                <li>Integrating prompt engineering into chatbots and automation systems</li>
+                <li>Training teams on effective prompt design</li>
+            </ul>
+            
+            <h3>Tools and Technologies</h3>
+            <ul>
+                <li><strong>OpenAI GPT-3.5/4, ChatGPT:</strong> For advanced language tasks</li>
+                <li><strong>Anthropic Claude, Google Bard, LLaMA:</strong> For diverse AI capabilities</li>
+                <li><strong>Prompt testing frameworks and APIs</strong></li>
+            </ul>
+            
+            <h3>Objective Results</h3>
+            <ul>
+                <li>Increased accuracy and consistency of AI-generated outputs</li>
+                <li>Reduced manual editing and post-processing</li>
+                <li>Faster deployment of AI-powered solutions</li>
+                <li>Unlocking new business opportunities with generative AI</li>
+            </ul>
+        </div>
+    </section>
+    
+    <!-- Prompt Examples Section -->
+    <section id="examples" class="container">
+        <h2 class="section-title">Prompt Engineering Examples</h2>
+        <div class="prompt-example">
+            <h3>Customer Support Response</h3>
+            <p><strong>Weak Prompt:</strong> "Answer this customer question"</p>
+            <p><strong>Optimized Prompt:</strong> "As a customer support agent for [Company], respond to this inquiry in 3-4 sentences. Use a [professional/friendly] tone. Include: 1) Acknowledgement of their issue 2) Specific solution or next steps 3) Offer for further assistance. Question: [Insert question]"</p>
+        </div>
+        
+        <div class="prompt-example">
+            <h3>Data Extraction</h3>
+            <p><strong>Weak Prompt:</strong> "Get the important info from this"</p>
+            <p><strong>Optimized Prompt:</strong> "Extract the following from the text below in JSON format: 1) Person names (key: 'names') 2) Dates in YYYY-MM-DD format (key: 'dates') 3) Monetary amounts with currency (key: 'amounts'). Return only the JSON without additional commentary. Text: [Insert text]"</p>
+        </div>
+    </section>
+</body>
+</html>

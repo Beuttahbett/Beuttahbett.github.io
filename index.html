@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beuttah Kipngetich - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS Variables */
+        :root {
+            --primary-color: #ff3333;
+            --dark-bg: #121212;
+            --medium-bg: #1f1f1f;
+            --light-text: #ffffff;
+            --accent-color: #ff4d4d;
+            --container-width: 90%;
+            --max-container-width: 1200px;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--medium-bg);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            width: 100%;
+            backdrop-filter: blur(10px);
+            background-color: rgba(31, 31, 31, 0.8);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            padding: 0;
+            margin: 0 auto;
+            width: var(--container-width);
+            max-width: var(--max-container-width);
+        }
+
+        nav ul li a {
+            color: var(--light-text);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-color);
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        /* Header Section */
+        .header-main {
+            display: flex;
+            width: var(--container-width);
+            max-width: var(--max-container-width);
+            margin: 2rem auto;
+            gap: 2rem;
+            padding: 2rem 0;
+            align-items: center;
+        }
+
+        .header-img-section {
+            flex: 0 0 35%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .profile-img {
+            width: 100%;
+            max-width: 350px;
+            height: auto;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 0.4rem solid var(--primary-color);
+            box-shadow: 0 0 1.5rem rgba(255, 77, 77, 0.5);
+            transition: transform 0.5s ease;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.08);
+        }
+
+        .header-content-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        .header-content-upper {
+            margin-bottom: 1.5rem;
+        }
+
+        .typewriter h1 {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-weight: bold;
+            color: var(--light-text);
+            margin-bottom: 0.5rem;
+            overflow: hidden; /* Ensures the content is not revealed until animation */
+            border-right: .15em solid var(--accent-color); /* The typwriter cursor */
+            white-space: nowrap; /* Keeps the content on a single line */
+            letter-spacing: .15em; /* Adjust as needed */
+            animation: 
+                typing 3.5s steps(40, end),
+                blink-caret .75s step-end infinite;
+        }
+
+        /* The typing effect */
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        /* The cursor blink effect */
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--accent-color); }
+        }
+
+        .header-content-upper h2 {
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
+            color: var(--accent-color);
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-short {
+            font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+            color: #ddd;
+            line-height: 1.8;
+        }
+
+        /* Buttons & Social Links */
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: clamp(0.8rem, 1.5vw, 1rem);
+        }
+
+        .btn:hover {
+            background-color: #e60000;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 51, 51, 0.4);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.5rem;
+            height: 2.5rem;
+            background-color: var(--medium-bg);
+            color: var(--light-text);
+            border-radius: 50%;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--medium-bg);
+            padding: 1.5rem 0;
+            text-align: center;
+            margin-top: 3rem;
+            width: 100%;
+        }
+
+        footer p {
+            color: #aaa;
+            font-size: clamp(0.8rem, 1.5vw, 1rem);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .header-main {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            
+            .header-img-section {
+                flex: 0 0 auto;
+                margin-bottom: 1.5rem;
+            }
+            
+            .header-content-section {
+                text-align: center;
+            }
+            
+            .action-buttons, .social-links {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 600px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.75rem;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+                padding: 1rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="about.html">About Me</a></li>
+            <li><a href="education.html">Education</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="skills.html">Skills</a></li>
+            <li><a href="delete.html">My Services</a></li>
+        </ul>
+    </nav>
+    
+    <header>
+        <div class="header-main">
+            <div class="header-img-section">
+                <img src="bett.png" alt="Beuttah Kipngetich" class="profile-img">
+            </div>
+            <div class="header-content-section">
+                <div class="header-content-upper">
+                    <div class="typewriter">
+                        <h1>BEUTTAH KIPNGETICH</h1>
+                    </div>
+                    <h2>Full-Stack Automation & Business Solutions Developer</h2>
+                    <p class="about-short">
+                        Passionate developer and automation specialist focused on building efficient solutions for businesses and startups. 
+                        I love turning ideas into scalable digital products that can benefit businesses, organizations, 
+                        individuals, and society at large.
+                    </p>
+                </div>
+                
+                <div class="action-buttons">
+    <a href="bett.pdf" download="Beuttah_Kipngetich_Resume.pdf">
+        <button class="btn"><i class="fas fa-download"></i> Download Resume</button>
+    </a>
+    <a href="contact.html" class="btn">
+        <i class="fas fa-envelope"></i> Contact Me
+    </a>
+</div>
+                
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/beuttah-bett-497a41362" target="_blank" title="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://x.com/BeuttahB" target="_blank" title="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://github.com/Beuttahbett" target="_blank" title="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.facebook.com/profile.php?id=100084274925005" target="_blank" title="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://wa.me/254725232692" target="_blank" title="WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <script>
+        // Optional: If you want to restart the typewriter animation on hover
+        document.querySelector('.typewriter h1').addEventListener('mouseover', function() {
+            this.style.animation = 'none';
+            void this.offsetWidth; // Trigger reflow
+            this.style.animation = 'typing 3.5s steps(40, end), blink-caret .75s step-end infinite';
+        });
+    </script>
+</body>
+</html>

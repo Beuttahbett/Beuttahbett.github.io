@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Specializations - Beuttah Kipngetich</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS Variables */
+        :root {
+            --primary-color: #ff3333;
+            --dark-bg: #121212;
+            --medium-bg: #1f1f1f;
+            --light-text: #ffffff;
+            --accent-color: #ff4d4d;
+            --container-width: 90%;
+            --max-container-width: 1200px;
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--medium-bg);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            width: 100%;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            padding: 0;
+            margin: 0 auto;
+            width: var(--container-width);
+            max-width: var(--max-container-width);
+        }
+
+        nav ul li a {
+            color: var(--light-text);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-color);
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        /* Container */
+        .container {
+            width: var(--container-width);
+            max-width: var(--max-container-width);
+            margin: 2rem auto;
+            padding: 2rem 0;
+            flex: 1;
+        }
+
+        /* Specializations Section */
+        .specialization-intro {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            color: #ddd;
+            margin-bottom: 2rem;
+            text-align: center;
+            line-height: 1.6;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .specializations {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .specialization-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            height: 100%;
+        }
+
+        .specialization-item {
+            background-color: var(--medium-bg);
+            padding: 1.8rem;
+            border-radius: 8px;
+            transition: all 0.3s;
+            border-left: 4px solid var(--primary-color);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .specialization-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .specialization-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            transition: all 0.3s;
+        }
+
+        .specialization-item:hover .specialization-icon {
+            color: var(--accent-color);
+            transform: scale(1.1);
+        }
+
+        .specialization-item h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: clamp(1rem, 1.5vw, 1.2rem);
+            transition: all 0.3s;
+        }
+
+        .specialization-item:hover h3 {
+            color: var(--accent-color);
+        }
+
+        .specialization-item p {
+            color: #ccc;
+            font-size: clamp(0.8rem, 1.3vw, 0.95rem);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .learn-more {
+            color: var(--accent-color);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-top: auto;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            opacity: 0;
+            transition: all 0.3s;
+        }
+
+        .specialization-item:hover .learn-more {
+            opacity: 1;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--medium-bg);
+            padding: 2.5rem 0 1.5rem;
+            text-align: center;
+            margin-top: auto;
+            width: 100%;
+        }
+
+        footer p {
+            color: #aaa;
+            font-size: clamp(0.8rem, 1.5vw, 1rem);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .specializations {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+
+        @media (max-width: 600px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.75rem;
+            }
+            
+            .specializations {
+                grid-template-columns: 1fr;
+            }
+            
+            .specialization-item {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Focus States for Accessibility */
+        nav ul li a:focus,
+        .specialization-link:focus {
+            outline: 2px solid var(--accent-color);
+            outline-offset: 2px;
+        }
+
+        /* Print Styles */
+        @media print {
+            nav {
+                display: none;
+            }
+            body {
+                background-color: white;
+                color: black;
+                font-size: 12pt;
+            }
+            .container {
+                padding: 0;
+                margin: 0;
+            }
+            .specialization-item {
+                page-break-inside: avoid;
+                border-left: 2px solid black;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="education.html">Education</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <section id="specializations">
+            <h2 class="specialization-intro">Hello, welcome to my portfolio, you can check out my latest work and my areas of specialization below:</h2>
+            <div class="specializations">
+                <a href="python.html" class="specialization-link">
+                    <div class="specialization-item">
+                        <div class="specialization-icon">
+                            <i class="fab fa-python"></i>
+                        </div>
+                        <h3>PYTHON FOR AUTOMATION AND SCRIPTING</h3>
+                        <p>I write python programs and scripts that help simplify tasks and handle repeated operations to enable businesses focus on other tasks.</p>
+                        <div class="learn-more">Learn More <i class="fas fa-arrow-right"></i></div>
+                    </div>
+                </a>
+                <a href="data.html" class="specialization-link">
+                    <div class="specialization-item">
+                        <div class="specialization-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h3>DATA MANIPULATION AND FILE CONVERSION</h3>
+                        <p>I can help in converting data to various types and manipulating them to achieve an intended goal.</p>
+                        <div class="learn-more">Learn More <i class="fas fa-arrow-right"></i></div>
+                    </div>
+                </a>
+                <a href="N8N.html" class="specialization-link">
+                    <div class="specialization-item">
+                        <div class="specialization-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h3>N8N AUTOMATION</h3>
+                        <p>I build automation agents that will handle repeated operations in a business and help make business operations efficient.</p>
+                        <div class="learn-more">Learn More <i class="fas fa-arrow-right"></i></div>
+                    </div>
+                </a>
+                <a href="chatbot.html" class="specialization-link">
+                    <div class="specialization-item">
+                        <div class="specialization-icon">
+                            <i class="fas fa-comment-dots"></i>
+                        </div>
+                        <h3>CHATBOT BUILDING</h3>
+                        <p>I build chatbots that can handle frequent customer inquiries and routine questions to enable business owners focus on other tasks.</p>
+                        <div class="learn-more">Learn More <i class="fas fa-arrow-right"></i></div>
+                    </div>
+                </a>
+                <a href="custom-software.html" class="specialization-link">
+                    <div class="specialization-item">
+                        <div class="specialization-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h3>CUSTOM SOFTWARE AND STARTUPS</h3>
+                        <p>I can build in-house software for businesses and also run startups.</p>
+                        <div class="learn-more">Learn More <i class="fas fa-arrow-right"></i></div>
+                    </div>
+                </a>
+                <a href="business.html" class="specialization-link">
+                    <div class="specialization-item">
+                        <div class="specialization-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>BUSINESS MANAGEMENT SYSTEMS</h3>
+                        <p>Building small business management systems using available technology like Microsoft Office that enable SME owners manage their operations efficiently.</p>
+                        <div class="learn-more">Learn More <i class="fas fa-arrow-right"></i></div>
+                    </div>
+                </a>
+                <a href="startups.html" class="specialization-link">
+                    <div class="specialization-item">
+                        <div class="specialization-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h3>STARTUPS</h3>
+                        <p>I am building software startups that will be beneficial to the society, currently building CHAMA MANAGEMENT SYSTEM.</p>
+                        <div class="learn-more">Learn More <i class="fas fa-arrow-right"></i></div>
+                    </div>
+                </a>
+                <a href="prompt-engineering.html" class="specialization-link">
+                    <div class="specialization-item">
+                        <div class="specialization-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>PROMPT ENGINEERING</h3>
+                        <p>Using LLMs and available technologies, I can perform tasks beyond my technical experience by guiding AI to guide me.</p>
+                        <div class="learn-more">Learn More <i class="fas fa-arrow-right"></i></div>
+                    </div>
+                </a>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

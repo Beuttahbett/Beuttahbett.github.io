@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Education - Beuttah Kipngetich</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS Variables */
+        :root {
+            --primary-color: #ff3333;
+            --dark-bg: #121212;
+            --medium-bg: #1f1f1f;
+            --light-text: #ffffff;
+            --accent-color: #ff4d4d;
+            --container-width: 90%;
+            --max-container-width: 1200px;
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--medium-bg);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            width: 100%;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            padding: 0;
+            margin: 0 auto;
+            width: var(--container-width);
+            max-width: var(--max-container-width);
+        }
+
+        nav ul li a {
+            color: var(--light-text);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-color);
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        /* Container and Section Styling */
+        .container {
+            width: var(--container-width);
+            max-width: var(--max-container-width);
+            margin: 2rem auto;
+            padding: 2rem 0;
+            flex: 1;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
+            margin-bottom: 2rem;
+            color: var(--accent-color);
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+
+        /* Education Timeline */
+        .education-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .education-timeline::before {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background-color: var(--primary-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px;
+        }
+
+        .education-item {
+            padding: 1.5rem;
+            position: relative;
+            background-color: var(--medium-bg);
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .education-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .education-item h3 {
+            color: var(--primary-color);
+            font-size: clamp(1.1rem, 1.8vw, 1.3rem);
+            margin-bottom: 0.5rem;
+        }
+
+        .education-year {
+            font-weight: 600;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+            font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+        }
+
+        .institution {
+            font-style: italic;
+            color: #ddd;
+            margin-bottom: 0.8rem;
+            font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+        }
+
+        .description {
+            color: #ccc;
+            line-height: 1.6;
+            font-size: clamp(0.9rem, 1.5vw, 1rem);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--medium-bg);
+            padding: 2.5rem 0 1.5rem;
+            text-align: center;
+            margin-top: auto;
+            width: 100%;
+        }
+
+        footer p {
+            color: #aaa;
+            font-size: clamp(0.8rem, 1.5vw, 1rem);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .education-timeline::before {
+                left: 31px;
+            }
+            
+            .education-item {
+                padding-left: 70px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.75rem;
+            }
+            
+            .education-timeline::before {
+                left: 20px;
+            }
+            
+            .education-item {
+                padding-left: 50px;
+            }
+        }
+
+        /* Focus States for Accessibility */
+        nav ul li a:focus,
+        .education-item:focus {
+            outline: 2px solid var(--accent-color);
+            outline-offset: 2px;
+        }
+
+        /* Print Styles */
+        @media print {
+            nav {
+                display: none;
+            }
+            body {
+                background-color: white;
+                color: black;
+                font-size: 12pt;
+            }
+            .container {
+                padding: 0;
+                margin: 0;
+            }
+            .education-item {
+                page-break-inside: avoid;
+                border-left: 2px solid black;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="education.html">Education</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <section id="education">
+            <h2 class="section-title">EDUCATION</h2>
+            <div class="education-timeline">
+                <div class="education-item">
+                    <h3>Bachelor of Science in Information Technology</h3>
+                    <p class="education-year">2023 to present</p>
+                    <p class="institution">Zetech University, Kenya</p>
+                    <p class="description">I specialize in Software Engineering and Artificial Intelligence. Graduating in 2026</p>
+                </div>
+                <div class="education-item">
+                    <h3>Certificate in Software Engineering</h3>
+                    <p class="education-year">2022-2023</p>
+                    <p class="institution">African Leadership Accelerator</p>
+                    <p class="description">Completed comprehensive training in software development using python and java (online)</p>
+                </div>
+                <div class="education-item">
+                    <h3>Certificate in Website development</h3>
+                    <p class="education-year">2023-2023</p>
+                    <p class="institution">Alison Online Academy</p>
+                    <p class="description">I was trained on building websites using code and low code tools, I also trained on website maintenance</p>
+                </div>
+                <div class="education-item">
+                    <h3>Network Security Basics</h3>
+                    <p class="education-year">2025</p>
+                    <p class="institution">Cisco Academy</p>
+                    <p class="description">I trained on cybersecurity essentials that enable me to secure digital devices and data from unwarranted access and minimise cybercrime attack surfaces</p>
+                </div>
+                <div class="education-item">
+                    <h3>General Tech knowledge</h3>
+                    <p class="description">As a person growing into tech, much of my skills are self-taught from free online courses, bootcamps and project based upskilling</p>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Beuttah Kipngetich</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS Variables */
+        :root {
+            --primary-color: #ff3333;
+            --dark-bg: #121212;
+            --medium-bg: #1f1f1f;
+            --light-text: #ffffff;
+            --accent-color: #ff4d4d;
+            --container-width: 90%;
+            --max-container-width: 1200px;
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--medium-bg);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            width: 100%;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            padding: 0;
+            margin: 0 auto;
+            width: var(--container-width);
+            max-width: var(--max-container-width);
+        }
+
+        nav ul li a {
+            color: var(--light-text);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-color);
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        /* Container and Section Styling */
+        .container {
+            width: var(--container-width);
+            max-width: var(--max-container-width);
+            margin: 2rem auto;
+            padding: 2rem 0;
+            flex: 1;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
+            margin-bottom: 2rem;
+            color: var(--accent-color);
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background-color: var(--medium-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .project-info {
+            padding: 1.5rem;
+        }
+
+        .project-info h3 {
+            color: var(--primary-color);
+            font-size: clamp(1.1rem, 1.8vw, 1.3rem);
+            margin-bottom: 0.8rem;
+        }
+
+        .project-info p {
+            color: #ccc;
+            margin-bottom: 0.8rem;
+            font-size: clamp(0.9rem, 1.5vw, 1rem);
+            line-height: 1.6;
+        }
+
+        .project-info strong {
+            color: #ddd;
+        }
+
+        /* Project Links and Details */
+        .project-link {
+            display: inline-block;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .project-link:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+
+        .additional-details {
+            display: none;
+            padding: 1rem;
+            background-color: rgba(0,0,0,0.2);
+            margin-top: 1rem;
+            border-radius: 5px;
+            border-left: 2px solid var(--primary-color);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .additional-details p {
+            margin-bottom: 0.5rem;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--medium-bg);
+            padding: 2.5rem 0 1.5rem;
+            text-align: center;
+            margin-top: auto;
+            width: 100%;
+        }
+
+        footer p {
+            color: #aaa;
+            font-size: clamp(0.8rem, 1.5vw, 1rem);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.75rem;
+            }
+        }
+
+        /* Focus States for Accessibility */
+        nav ul li a:focus,
+        .project-link:focus {
+            outline: 2px solid var(--accent-color);
+            outline-offset: 2px;
+        }
+
+        /* Print Styles */
+        @media print {
+            nav {
+                display: none;
+            }
+            body {
+                background-color: white;
+                color: black;
+                font-size: 12pt;
+            }
+            .container {
+                padding: 0;
+                margin: 0;
+            }
+            .project-card {
+                page-break-inside: avoid;
+                border-left: 2px solid black;
+            }
+            .additional-details {
+                display: block !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="education.html">Education</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <section id="projects">
+            <h2 class="section-title">PAST PROJECTS</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <img src="images/project1.jpg" alt="Project 1" class="project-image">
+                    <div class="project-info">
+                        <h3>Automated Data Conversion System</h3>
+                        <p>A Python-based solution that reduced time used to generate stickers for use in elections.</p>
+                        <p><strong>Technologies:</strong> Python, Pandas, Excel</p>
+                        <a class="project-link" onclick="toggleDetails('details1', event)">View Details</a>
+                        <div id="details1" class="additional-details">
+                            <p><strong>Client:</strong> United Democratic Alliance</p>
+                            <p><strong>Duration:</strong> 1 month</p>
+                            <p><strong>Key Features:</strong> Faced with a problem of always having to manually design and create the stickers, I wrote a program that automatically fetches the data from an excel file and creates the stickers</p>
+                            <p><strong>Impact:</strong> Saved over 200 man-hours per month and reduced errors by 95%.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="images/project2.jpg" alt="Project 2" class="project-image">
+                    <div class="project-info">
+                        <h3>E-commerce Chatbot</h3>
+                        <p>I built a chatbot that handles customer inquiries and routine questions</p>
+                        <p><strong>Technologies:</strong> Node.js, Twilio, NLP</p>
+                        <a class="project-link" onclick="toggleDetails('details2', event)">View Details</a>
+                        <div id="details2" class="additional-details">
+                            <p><strong>Client:</strong> Affordables Wear</p>
+                            <p><strong>Duration:</strong> 2 months</p>
+                            <p><strong>Key Features:</strong> Product recommendations, order tracking, and 24/7 customer support.</p>
+                            <p><strong>Impact:</strong> Reduced customer service costs by 40% and improved response time from hours to seconds.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="images/project3.jpg" alt="Project 3" class="project-image">
+                    <div class="project-info">
+                        <h3>Automated Customer Feedback Collection</h3>
+                        <p>Built an automated feedback and follow up system using N8N</p>
+                        <p><strong>Technologies:</strong> n8n, API Integration, Slack</p>
+                        <a class="project-link" onclick="toggleDetails('details3', event)">View Details</a>
+                        <div id="details3" class="additional-details">
+                            <p><strong>Client:</strong> Fastfood Eatery</p>
+                            <p><strong>Duration:</strong> 2 months</p>
+                            <p><strong>Key Features:</strong> I built an N8N workflow that automatically inquires customers on their feedback and follows up on their answers.</p>
+                            <p><strong>Impact:</strong> Improved customer satisfaction, and general increase in customer traffic as customers wanted where their feedback is valued.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 Beuttah Kipngetich. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleDetails(detailsId, event) {
+            event.preventDefault();
+            const detailsElement = document.getElementById(detailsId);
+            const link = event.target;
+            if (detailsElement.style.display === "block") {
+                detailsElement.style.display = "none";
+                link.textContent = "View Details";
+            } else {
+                detailsElement.style.display = "block";
+                link.textContent = "Hide Details";
+            }
+        }
+    </script>
+</body>
+</html>
